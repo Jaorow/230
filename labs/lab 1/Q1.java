@@ -12,5 +12,7 @@ public class Q1{
 
         System.out.printf("%.2fcms is %d feet %.2f inches.",num, feet, In);
         
+        
+
     }
 }
