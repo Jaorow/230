@@ -8,7 +8,7 @@ public class Q2 {
         
         System.out.println("Enter the number of sides:");
         int sides = input.nextInt();
-        
+        input.close();
         String shape = "NULL";
         
         if (sides == 3){ shape = "triangle";}

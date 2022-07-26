@@ -17,7 +17,7 @@ public class Q2 {
 
     System.out.printf("Simple Interest = $%.2f",answer);
     
-
+    input.close();
 
   }
 }

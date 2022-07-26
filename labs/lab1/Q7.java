@@ -12,7 +12,7 @@ public class Q7 {
         int sum = Integer.parseInt(str[size-3])+Integer.parseInt(str[size-2])+Integer.parseInt(str[size-1]);
      
         System.out.printf("The sum is %d.\n",sum);
-        
+        input.close();
 
  } 
 } 

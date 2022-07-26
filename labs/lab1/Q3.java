@@ -35,6 +35,6 @@ public class Q3 {
     System.out.printf("GST: $%.0f\n",total*(gst_rate/100));
     System.out.printf("Total Electricity Charges: $%.0f\n",total+(total*(gst_rate/100)));
     
-
+    input.close();
   }
 }

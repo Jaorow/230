@@ -15,7 +15,7 @@ public class Q6 {
 
     System.out.printf("Year: %s\nMonth: %s\nDay: %s\nThe date of the next day is: %s\n",dates.getYear(),dates.getMonth(),dates.getDayOfMonth(),dates.plusDays(1));
             
-
+    input.close();
 
 
 

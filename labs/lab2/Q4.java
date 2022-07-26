@@ -33,6 +33,6 @@ public class Q4 {
             message = "The password is too short.";
         }
         System.out.println(message);
-        
+        input.close();
     }
 }

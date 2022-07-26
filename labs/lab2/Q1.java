@@ -17,7 +17,7 @@ public class Q1 {
 
         System.out.println("Enter the fourth integer:");
         int n4 = input.nextInt();
-
+        input.close();
         int lar = 0;
 
         if (n1>lar){lar = n1;}

@@ -11,7 +11,7 @@ public class Q1{
         double In = totalInches - (feet*12);
 
         System.out.printf("%.2fcms is %d feet %.2f inches.",num, feet, In);
-        
+        input.close();
         
 
     }

@@ -10,7 +10,7 @@ public class Q9 {
         LocalTime time = LocalTime.parse(sTime);
         
         System.out.printf("Hour: %d\nMinute: %d\nSecond: %d\nIt will be: %s\n",time.getHour(),time.getMinute(),time.getSecond(),time.plusMinutes(10));
-
+        input.close();
 
     }
 }

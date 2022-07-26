@@ -26,6 +26,6 @@ public class Q4 {
 
         
         System.out.printf("The distance between the two points is %.2f.\n",result);
-        
+        input.close();
  } 
 } 

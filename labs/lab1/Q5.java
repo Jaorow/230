@@ -43,5 +43,6 @@ public class Q5 {
 		double result = (2*6371)*asin;
 
 		System.out.printf("The distance between the two cities is %.02fkilometres.\n",result);
- } 
+		input.close();
+	} 
 } 

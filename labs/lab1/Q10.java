@@ -30,7 +30,7 @@ public class Q10{
         String w2_3 = l2[w2_length-1];
 
         System.out.printf("The password is %s%s%s%s%s%s\n",w1_1,w2_1, w1_2,w2_2, w1_3,w2_3);
-        
+        input.close();
     }        
 
 }
