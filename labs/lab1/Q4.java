@@ -1,3 +1,5 @@
+package labs.lab1;
+
 import java.util.Scanner;
 
 public class Q4 {

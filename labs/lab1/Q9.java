@@ -1,3 +1,4 @@
+package labs.lab1;
 import java.time.LocalTime;
 import java.util.Scanner;
 public class Q9 {
