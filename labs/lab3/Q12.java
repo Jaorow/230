@@ -1,4 +1,4 @@
-// package labs.lab3;
+package labs.lab3;
 
 import java.util.*;
 public class Q12 {

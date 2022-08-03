@@ -1,6 +1,6 @@
+package labs.lab3;
 import java.util.*;
 
-// package labs.lab3;
 
 
 public class Q10 {

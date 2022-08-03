@@ -1,6 +1,6 @@
+package labs.lab3;
 import java.util.ArrayList;
 
-// package labs.lab3;
 
 public class Q9 {
     public static void main(String[] args){
