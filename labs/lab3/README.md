@@ -9,11 +9,14 @@ this lab we learnt about lists, arrays, 2D arrays and ArrayLists.
 **functions**
 
 ```add``` = Adding elements to end of ArrayList.
+
 ```clear``` = clearing ArrayList
-```contains`` = true/false if ArrayList contains values
+
+```contains``` = true/false if ArrayList contains values
 
 
-```get ``` = returns element at index
+```get``` = returns element at index
+
 ```indexOf``` = returns index of first occurance of element 
 
 
@@ -21,4 +24,5 @@ this lab we learnt about lists, arrays, 2D arrays and ArrayLists.
 
 
 ```size``` = returns size
+
 ```trimToSize``` = trims list to a size
