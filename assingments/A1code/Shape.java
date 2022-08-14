@@ -2,13 +2,13 @@
  *    ===============================================================================
  *    Shape.java : The superclass of all shapes.
  *    A shape defines various properties, including selected, colour, width and height.
- *    YOUR UPI: ANSWER
+ *    YOUR UPI: Jdun349
  *    ===============================================================================
  */
 import java.awt.*;
 abstract class Shape {
-    public static final int DEFAULT_PATHTYPE = 0;
-    public static final int DEFAULT_SHAPETYPE = 0;
+    public static final PathType DEFAULT_PATHTYPE = PathType.BOUNCE;
+    public static final ShapeType DEFAULT_SHAPETYPE = ShapeType.RECTANGLE;
     public static final int DEFAULT_X = 0, DEFAULT_Y = 0, DEFAULT_WIDTH=80, DEFAULT_HEIGHT=60, DEFAULT_PANEL_WIDTH=600, DEFAULT_PANEL_HEIGHT=800;
     public static final Color DEFAULT_COLOR=Color.orange;
     public int x, y, width=DEFAULT_WIDTH, height=DEFAULT_HEIGHT, panelWidth=DEFAULT_PANEL_WIDTH, panelHeight=DEFAULT_PANEL_HEIGHT; // the bouncing area
@@ -17,6 +17,24 @@ abstract class Shape {
     protected boolean selected = false, inverted = false;    // draw handles if selected, invert color
 
 	//constructors
+    public Shape(){
+        x = DEFAULT_X;
+        y = DEFAULT_Y;
+        width=DEFAULT_WIDTH;
+        panelWidth=DEFAULT_PANEL_WIDTH;
+        panelHeight=DEFAULT_PANEL_HEIGHT;
+        color = DEFAULT_COLOR;
+        path = new BouncingPath(1, 2);
+    }
+    public Shape(int x_in, int y_in, int width_in, int panelWidth_in, int panelHeight_in,Color color_in,MovingPath path_in){
+        x=x_in;
+        y=y_in;
+        width = width_in;
+        panelWidth = panelWidth_in;
+        panelHeight = panelHeight_in;
+        color=color_in;
+        path = path_in;
+    }
 
     public void move() {
 		//complete the move() method
@@ -37,6 +55,8 @@ abstract class Shape {
     public void setSelected(boolean s) { selected = s; }
     public boolean getInverted() { return inverted; }
 
+
+    
     public void resetPanelSize(int w, int h) {
 		panelWidth = w;
 		panelHeight = h;
