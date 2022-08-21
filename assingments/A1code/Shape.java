@@ -18,35 +18,44 @@ abstract class Shape {
 
 	//constructors
     public Shape(){
-        x = DEFAULT_X;
-        y = DEFAULT_Y;
-        width=DEFAULT_WIDTH;
-        panelWidth=DEFAULT_PANEL_WIDTH;
-        panelHeight=DEFAULT_PANEL_HEIGHT;
-        color = DEFAULT_COLOR;
-        path = new BouncingPath(1, 2);
     }
-    public Shape(int x_in, int y_in, int width_in, int panelWidth_in, int panelHeight_in,Color color_in,MovingPath path_in){
-        x=x_in;
-        y=y_in;
+    public Shape(int x_in,int y_in,int width_in,int height_in , int panelWidth_in, int panelHeight_in,Color color_in,PathType path_in){
+        x= x_in;
+        y= y_in;
         width = width_in;
+        height = height_in;
         panelWidth = panelWidth_in;
         panelHeight = panelHeight_in;
         color=color_in;
-        path = path_in;
+        // this doest work 
+        switch(path_in){
+        case BOUNCE:
+            MovingPath movingPath = new BouncingPath(1, 2);  
+        case DIAGONAL:
+       
+            MovingPath movingPathd = new DiagonalPath(2); 
+        }
     }
 
     public void move() {
-		//complete the move() method
+        this.path.move();
+        this.inverted = !this.inverted;
     }
 
-	//tostring() method
+	public String toString(){
+        String s = String.format("%s:[(%d,%d),%dx%d,bouncing(%dx%d),area=%.0f]", getClass().getName(),x,y,width,height,panelWidth,panelHeight,getArea());
+        return s;
+    }
 
 	//3 abstract methods
 	public abstract void draw(Graphics g);
+    public abstract boolean contains(Point mousePt);
+    public abstract double getArea();
 
- 	public int getX() { return this.x; }
-    public int getY() { return this.y;}
+
+    // return height * width;
+ 	public int getX() {return this.x;}
+    public int getY() {return this.y;}
     public int getWidth() { return width; }
     public int getHeight() {return height; }
 	public Color getColor() { return color; }
@@ -71,6 +80,29 @@ abstract class Shape {
      *    MovingPath : The superclass of all paths. It is an inner class.
      *    A path can change the current position of the shape.
      *    =============================================================================== */
+
+    class DiagonalPath extends MovingPath{
+        public DiagonalPath(int i){
+            deltaX = i;
+            deltaY = i;
+
+        }
+        public void move(){
+            x = x + deltaX;
+            y = y + deltaY;
+            if (panelWidth<x+width) {
+                x=0;
+            }
+            if (panelHeight<y+height) {
+                y=0;
+            }
+        }
+    
+    }
+
+
+
+
     abstract class MovingPath {
         protected int deltaX, deltaY; // moving distance
         public MovingPath() { }
