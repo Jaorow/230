@@ -20,13 +20,13 @@ abstract class Shape {
     public Shape(){
     }
     public Shape(int x_in,int y_in,int width_in,int height_in , int panelWidth_in, int panelHeight_in,Color color_in,PathType path_in){
-        x= x_in;
-        y= y_in;
+        x = x_in;
+        y = y_in;
         width = width_in;
         height = height_in;
         panelWidth = panelWidth_in;
         panelHeight = panelHeight_in;
-        color=color_in;
+        color = color_in;
         // this doest work 
         switch(path_in){
         case BOUNCE:
