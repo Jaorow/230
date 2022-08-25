@@ -1,9 +1,3 @@
-
-interface Swim {
-  public void fastSwim();
-  public void slowSwim();
-}
-
 class Demo2{
   public Demo2(boolean isFast){
 

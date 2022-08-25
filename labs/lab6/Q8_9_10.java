@@ -7,7 +7,10 @@ interface Incrementer {
 class Rectangle {
 	private Point topLeft = new Point(0,0);
 	private int width=10, height=20;
-
+	//fixes in vs code 
+	public int getget(){
+		return width+height;
+	}
 	private Incrementer smallMove = this.new MyIncrementer(1,1);
 
 	public void moving(){

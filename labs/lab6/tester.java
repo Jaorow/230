@@ -4,9 +4,25 @@ public class tester {
             // first_two_questions();
             // Q3_4_5();
             // Q6_7_swimming();
-            Q8_nested_classes();
+            // Q8_nested_classes();
+            PrimeSequence();
         }
-        private static void Q8_nested_classes() {
+        private static void PrimeSequence(){
+        PrimeSequence ps = new PrimeSequence();
+        System.out.println(ps);
+        PrimeSequence ps2 = new PrimeSequence(7);
+        System.out.println(ps2);
+        PrimeSequence ps1 = new PrimeSequence();
+        for (int i: ps1) System.out.print(i + " "); System.out.println();
+        PrimeSequence ps3 = new PrimeSequence(7);
+        for (int i: ps3) System.out.print(i + " ");
+        PrimeSequence ps4 = new PrimeSequence();
+        for (int i: ps4) System.out.print(i + " "); System.out.println();
+        PrimeSequence ps5 = new PrimeSequence(7);
+        for (int i: ps5) System.out.print(i + " ");
+        
+        }
+        public static void Q8_nested_classes() {
             Rectangle r1 = new Rectangle(100, 120, 30, 40);
             Rectangle.MyIncrementer obj = r1.new MyIncrementer(1,2);
             obj.increment();
