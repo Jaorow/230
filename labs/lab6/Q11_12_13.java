@@ -35,6 +35,9 @@ class PrimeSequence implements Iterable<Integer> {
 
         
     public Iterator<Integer> iterator() { return new PrimeIterator(); }
+
+
+    
     class PrimeIterator implements Iterator<Integer>{
         private int nextIndex = 0;
 

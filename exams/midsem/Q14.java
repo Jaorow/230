@@ -44,7 +44,7 @@ class SubUniqueEven extends ArrayList<Integer>{
 
 
 
-class BasicUniqueEven {
+class BasicUniqueEven implements Iterable<Integer>{
     private ArrayList<Integer> items;
     public BasicUniqueEven(){
         items = new ArrayList<Integer>();
@@ -78,6 +78,7 @@ class BasicUniqueEven {
     public String toString(){
         return String.format("%s",items.toString());
     }
+
     public int size(){return items.size();}
     public int get(int i){return items.get(i);}
     public Iterator<Integer> iterator() { return new UniqueEvenIterator(this); }
