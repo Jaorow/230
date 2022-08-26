@@ -1,0 +1,6 @@
+enum Material {
+    WOOD, GRASS;
+
+}
+
+
