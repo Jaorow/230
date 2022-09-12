@@ -18,16 +18,18 @@ enum PathType { BOUNCE, FALL;
 abstract class Shape {
     public static final PathType DEFAULT_PATHTYPE = PathType.BOUNCE;
     public static final ShapeType DEFAULT_SHAPETYPE = ShapeType.RECTANGLE;
-    
     public static final int DEFAULT_X = 0, DEFAULT_Y = 0, DEFAULT_WIDTH=80, DEFAULT_HEIGHT=60, DEFAULT_PANEL_WIDTH=600, DEFAULT_PANEL_HEIGHT=800;
     public static final Color DEFAULT_COLOR=Color.orange;
     public int x, y, width=DEFAULT_WIDTH, height=DEFAULT_HEIGHT, panelWidth=DEFAULT_PANEL_WIDTH, panelHeight=DEFAULT_PANEL_HEIGHT; // the bouncing area
     protected MovingPath path = new BouncingPath(1, 2);            // the moving path
     protected Color color=DEFAULT_COLOR;
     protected boolean selected = false;    // draw handles if selected
+    
+    public static final String DEFAULT_TEXT = "A2";
+    protected String text = DEFAULT_TEXT;
 
     public Shape() {}
-    public Shape(int x, int y, int w, int h, int pw, int ph, Color c, PathType pt) {
+    public Shape(int x, int y, int w, int h, int pw, int ph, Color c, PathType pt, String t) {
         this.x = x;
         this.y = y;
         panelWidth = pw;
@@ -35,6 +37,7 @@ abstract class Shape {
         width = w;
         height = h;
         color = c;
+        text = t;
 		switch (pt) {
 			case BOUNCE : {
 				path = new BouncingPath(1, 2);
@@ -45,8 +48,14 @@ abstract class Shape {
 			}
 		}
     }
+    public String getText(){ return text;}
+    public void setText(String t){ text = t; }
+    public void drawString(Graphics g){
+        g.setColor(Color.BLACK);
+        g.drawString(text, x, y);
+    }
     public String toString() {
-		return String.format("%s:[x=%d,y=%d,c=%s,path=%s]", this.getClass().getName(),x,y,color,path);
+		return String.format("%s:[x=%d,y=%d,c=%s,path=%s,text=%s]", this.getClass().getName(),x,y,color,path,text);
 	}
 
 	// you don't need to make any changes after this line ______________
