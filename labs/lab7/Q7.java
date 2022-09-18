@@ -11,24 +11,15 @@ public class Q7 {
 
         try {
             fileInput = new Scanner(new File(filename));
-            
             while (fileInput.hasNextLine()) {
                     String sen = fileInput.nextLine();
                     String[] li = sen.split(",");
                     for (String string : li) {
                         int num = Integer.parseInt(string);
-                        // System.out.println(num);
-                        
-                        if (num < max && num%2==0){
-                            max = num;
-                        }
-                    }
-                    
-                    
-                
+                        if (num < max && num%2==0){ max = num; }
+                    }    
             }
- 
-
+            
         } catch (IOException e) {
             System.out.printf("ERROR: The file '%s' does not exist.\n", filename);
             return max;
