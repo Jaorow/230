@@ -1,11 +1,14 @@
 /*
  *	===============================================================================
  *	OvalShape.java : A shape that is an oval.
- *  YOUR UPI:
+ *  YOUR UPI: Jdun349
  *	=============================================================================== */
 import java.awt.*;
 class OvalShape extends Shape {
 	public OvalShape() {}
+	public OvalShape(int x, int y, int w, int h, int mw, int mh, Color c, PathType pt) {
+		super(x ,y ,w, h ,mw ,mh, c, pt,"A2");
+	}
 	public OvalShape(int x, int y, int w, int h, int mw, int mh, Color c, PathType pt,String t) {
 		super(x ,y ,w, h ,mw ,mh, c, pt,t);
 	}
