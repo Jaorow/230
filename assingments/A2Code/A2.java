@@ -19,13 +19,16 @@ public class A2  extends JFrame {
 
 	class TextActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			//complete this
+			String title = textTextField.getText();		
+			panel.setCurrentString(title);
+			
+
 		}
 	}
 	class FillActionListener implements ActionListener {
 		public void actionPerformed( ActionEvent e) {
 			Color newColor = JColorChooser.showDialog(panel, "Fill Color", panel.getCurrentColor());
-			//complete this
+			panel.setCurrentColor(newColor);
 		}
 	}
 	class LoadActionListener implements ActionListener  {
@@ -99,4 +102,3 @@ public class A2  extends JFrame {
 	}
 
 }
-

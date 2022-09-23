@@ -15,29 +15,92 @@ import java.lang.reflect.Field;
 
 class AnimationViewer extends JComponent implements Runnable {
 	private Thread animationThread = null;		// the thread for animation
-	private static int DELAY = 120;				 // the current animation speed
+	private static int DELAY = 1;				 // the current animation speed
 	private ArrayList<Shape> shapes = new ArrayList<Shape>(); //create the ArrayList to store shapes
 	private ShapeType currentShapeType=Shape.DEFAULT_SHAPETYPE; // the current shape type,
 	private PathType currentPathType=Shape.DEFAULT_PATHTYPE;	// the current path type
 	private Color currentColor=Shape.DEFAULT_COLOR; // the current fill colour of a shape
 	private int currentPanelWidth=Shape.DEFAULT_PANEL_WIDTH, currentPanelHeight = Shape.DEFAULT_PANEL_HEIGHT, currentWidth=Shape.DEFAULT_WIDTH, currentHeight=Shape.DEFAULT_HEIGHT;
 
-	public AnimationViewer() {
-		start();
-		addMouseListener(new MyMouseAdapter());
+	private String currentText = Shape.DEFAULT_TEXT;
+
+	public void setCurrentString(String text){
+		this.currentText = text;
+		for (Shape shape : shapes) {
+			if (shape.isSelected()) {
+				shape.setText(text);
+			}
+		}
 	}
+
+	public String getCurrentText(){
+		return this.currentText;
+	}
+
 	protected void createNewShape(int x, int y) {
-		//complete this
+		if (currentShapeType.equals(ShapeType.RECTANGLE)) {
+			RectangleShape rec = new RectangleShape(x,y,currentWidth,currentHeight,currentPanelWidth,currentPanelHeight,currentColor,currentPathType,currentText);
+			shapes.add(rec);
+		}
+		if (currentShapeType.equals(ShapeType.OVAL)) {
+			OvalShape ova = new OvalShape(x,y,currentWidth,currentHeight,currentPanelWidth,currentPanelHeight,currentColor,currentPathType,currentText);
+			shapes.add(ova);
+		}
 	}
 
 
 	public final void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		//complete this
+		for (Shape shape : shapes) {
+			shape.move();
+			shape.draw(g);
+			shape.drawHandles(g);
+			shape.drawString(g);
+		}
 	}
-	public void setCurrentColor(Color bc) {
-		//complete this
 
+	public void createAndAddShape(String sentence){
+		// OVAL,BOUNCE,red,10,20,A2Oval
+		String[] li = sentence.split(",");
+		currentShapeType = ShapeType.valueOf(li[0]);
+		currentPathType = PathType.valueOf(li[1]);
+		currentColor = getColorFromString(String.valueOf(li[2]));
+		int x = Integer.parseInt(String.valueOf(li[3]));
+		int y = Integer.parseInt(String.valueOf(li[4]));
+		currentText = String.valueOf(li[5]);
+		createNewShape(x, y);
+	}
+
+	public void setCurrentColor(Color bc) {
+		currentColor = bc;
+		for (Shape shape : shapes) {
+			if(shape.isSelected()){
+				shape.setColor(bc);
+			}
+			
+		}
+	}
+
+	public boolean loadShapes(String filename){
+		Scanner fileInput = null;
+// TODO: return false if file is empty. 
+		try {
+            fileInput = new Scanner(new File(filename));
+            while (fileInput.hasNextLine()) {
+                String sen = fileInput.nextLine();
+				createAndAddShape(sen);
+                }
+        } catch (IOException e) {
+            System.out.printf("ERROR: The file %s does not exist.\n", filename);
+			return false;
+        } finally {
+            if (fileInput!= null)
+                fileInput.close();
+        } return true; }
+
+	public AnimationViewer() {
+		start();
+		addMouseListener(new MyMouseAdapter());
 	}
 
 	// you don't need to make any changes after this line ______________

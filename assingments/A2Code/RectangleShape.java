@@ -14,7 +14,8 @@ class RectangleShape extends Shape {
 	}
 	@Override
 	public void draw(Graphics g) {
-		//complete this
+		g.setColor(this.color);
+		g.fillRect(this.x, this.y, this.width, this.height);
 	}
 	@Override
 	public boolean contains(Point mousePt) {
