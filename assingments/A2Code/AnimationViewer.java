@@ -15,7 +15,7 @@ import java.lang.reflect.Field;
 
 class AnimationViewer extends JComponent implements Runnable {
 	private Thread animationThread = null;		// the thread for animation
-	private static int DELAY = 1;				 // the current animation speed
+	private static int DELAY = 100;				 // the current animation speed
 	private ArrayList<Shape> shapes = new ArrayList<Shape>(); //create the ArrayList to store shapes
 	private ShapeType currentShapeType=Shape.DEFAULT_SHAPETYPE; // the current shape type,
 	private PathType currentPathType=Shape.DEFAULT_PATHTYPE;	// the current path type

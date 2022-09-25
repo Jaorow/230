@@ -33,7 +33,11 @@ public class A2  extends JFrame {
 	}
 	class LoadActionListener implements ActionListener  {
 		public void actionPerformed(ActionEvent e) {
-			//complete this
+			if (panel.loadShapes(filenameTextField.getText())){
+				panel.loadShapes(filenameTextField.getText());
+			}else{
+				filenameTextField.setText("ERROR: The file A.txt does not exist.");
+			}
 		}
 	}
 

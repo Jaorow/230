@@ -14,8 +14,8 @@ class OvalShape extends Shape {
 	}
 	@Override 
 	public void draw(Graphics g) {
-		setColor(this.color);
-		drawHandles(g);
+		g.setColor(this.color);
+		g.fillOval(this.x, this.y, this.width, this.height);
 
 	}
 	@Override
