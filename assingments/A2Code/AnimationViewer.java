@@ -83,7 +83,6 @@ class AnimationViewer extends JComponent implements Runnable {
 
 	public boolean loadShapes(String filename){
 		Scanner fileInput = null;
-// TODO: return false if file is empty. 
 		try {
             fileInput = new Scanner(new File(filename));
             while (fileInput.hasNextLine()) {
