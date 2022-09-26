@@ -24,6 +24,10 @@ class AnimationViewer extends JComponent implements Runnable {
 
 	private String currentText = Shape.DEFAULT_TEXT;
 
+	public void setCurrentSpeed(int speed){
+		DELAY = speed;
+	}
+
 	public void setCurrentString(String text){
 		this.currentText = text;
 		for (Shape shape : shapes) {

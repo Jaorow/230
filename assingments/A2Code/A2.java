@@ -15,14 +15,18 @@ public class A2  extends JFrame {
 	JButton fillButton, loadButton;
 	JComboBox<ShapeType> shapesComboBox;
 	JComboBox<PathType> pathComboBox;
-	JTextField textTextField, filenameTextField;
+	JTextField textTextField, filenameTextField,speedTextField;
 
 	class TextActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			String title = textTextField.getText();		
 			panel.setCurrentString(title);
-			
-
+		}
+	}
+	class speedTextField implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			String speed = speedTextField.getText();		
+			panel.setCurrentSpeed(Integer.parseInt(speed));
 		}
 	}
 	class FillActionListener implements ActionListener {
@@ -77,6 +81,8 @@ public class A2  extends JFrame {
 		pathComboBox.addActionListener( new PathActionListener());
 		textTextField = new JTextField("A2");
 		textTextField.addActionListener( new TextActionListener());
+		speedTextField = new JTextField("100");
+		speedTextField.addActionListener( new speedTextField());
 		fillButton = new JButton("Fill");
 		fillButton.addActionListener( new FillActionListener());
 		loadButton = new JButton("Load");
@@ -91,6 +97,8 @@ public class A2  extends JFrame {
 		toolsPanel.add(fillButton);
 		toolsPanel.add( new JLabel(" Text: ", JLabel.RIGHT));
 		toolsPanel.add(textTextField);
+		toolsPanel.add (new JLabel(" Speed: ", JLabel.RIGHT));
+		toolsPanel.add(speedTextField);
 		toolsPanel.add( new JLabel(" Filename: ", JLabel.RIGHT));
 		toolsPanel.add(filenameTextField);
 		toolsPanel.add(loadButton);
