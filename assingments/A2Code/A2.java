@@ -7,8 +7,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.event.*;
-import java.util.ArrayList;
+// import javax.swing.event.*;
+// import java.util.ArrayList;
 
 public class A2  extends JFrame {
 	private AnimationViewer panel;  // panel for bouncing area
@@ -35,6 +35,8 @@ public class A2  extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			if (panel.loadShapes(filenameTextField.getText())){
 				panel.loadShapes(filenameTextField.getText());
+				filenameTextField.setText("");
+
 			}else{
 				filenameTextField.setText("ERROR: The file A.txt does not exist.");
 			}
