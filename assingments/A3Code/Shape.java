@@ -16,6 +16,33 @@ abstract class Shape {
     protected boolean selected = false;    // draw handles if selected
 
 	//A3 Add parent, getParent, setParent, getPath etc
+    protected NestedShape parent;
+
+    public NestedShape getParent(){
+        return this.parent;
+    }
+    public void setParent(NestedShape s){
+        this.parent = s;
+    }
+    public Shape[] getPath(){
+        return getPathToRoot(this, 0);
+    }
+
+    public Shape[] getPathToRoot(Shape aShape, int depth) {
+        Shape[] returnShapes;
+        if (aShape == null) {
+          if(depth == 0) return null;
+          else returnShapes = new Shape[depth];
+        }
+        else {
+          depth++;
+          returnShapes = getPathToRoot(aShape.getParent(), depth);
+          returnShapes[returnShapes.length - depth] = aShape;
+        }
+        return returnShapes;
+      }
+      
+
 
     public Shape() {}
     public Shape(int x, int y, int w, int h, int pw, int ph, Color c, PathType pt) {
@@ -39,9 +66,6 @@ abstract class Shape {
     public String toString() {
 		return String.format("%s,(x=%d,y=%d,w=%d,h=%d,pw=%d,ph=%d,c=%s,path=%s", this.getClass().getName(),x,y,width,height,panelWidth,panelHeight,color,path);
 	}
-
-
-
     
     public int getX() { return this.x; }
 	public void setX(int x) { this.x = x; }
