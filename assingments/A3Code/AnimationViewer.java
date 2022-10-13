@@ -52,14 +52,16 @@ class AnimationViewer extends JComponent implements Runnable {
 	class MyMouseAdapter extends MouseAdapter {
 		public void mouseClicked( MouseEvent e ) {
 			boolean found = false;
-			for (Shape currentShape: root.getAllInnerShapes())
-				if ( currentShape.contains( e.getPoint()) ) { // if the mousepoint is within a shape, then set the shape to be selected/deselected
+			for ( Shape currentShape: root.getAllInnerShapes() )
+				if ( currentShape.contains( e.getPoint() ) ) { 
+					// if the mousepoint is within a shape, then set the shape to be selected/deselected
 					currentShape.setSelected( ! currentShape.isSelected() );
 					found = true;
 				}
 			if (!found){
 				// createNewShape(e.getX(), e.getY());
-				root.createInnerShape(e.getX(), e.getY(), currentWidth, currentHeight, currentColor, currentPathType, currentShapeType);
+				Shape s = root.createInnerShape(e.getX(), e.getY(), currentWidth,currentHeight, currentColor, currentPathType, currentShapeType);
+				insertNodeInto(s, root);
 			}
 		}
 	}
@@ -84,7 +86,6 @@ class AnimationViewer extends JComponent implements Runnable {
 			currentShape.setPanelSize(currentPanelWidth,currentPanelHeight );
 	}
 
-	private ArrayList<TreeModelListener> treeModelListeners = new ArrayList<TreeModelListener>();
 
 	public boolean isLeaf(Object node){
 		return !(node instanceof NestedShape);
@@ -140,6 +141,9 @@ class AnimationViewer extends JComponent implements Runnable {
 		return count;
 	}
 
+	private ArrayList<TreeModelListener> treeModelListeners = new ArrayList<TreeModelListener>();
+
+
 	public void addTreeModelListener(final TreeModelListener tml){
 		treeModelListeners.add(tml);
 	}
@@ -158,10 +162,29 @@ class AnimationViewer extends JComponent implements Runnable {
 	}
 
 	public void insertNodeInto(Shape newChild, NestedShape parent){
-		
+		fireTreeNodesInserted(this, parent.getPath(), new int[]{getIndexOfChild(parent, newChild)},new Object[]{newChild});
 	}
 
+	// FIXME: not working...
+	public void addShapeNode(NestedShape selectedNode){
+		if(isRoot(selectedNode)){
+			Shape s = selectedNode.createInnerShape(0, 0, currentWidth,currentHeight, currentColor, currentPathType, currentShapeType);
+			this.insertNodeInto(s, selectedNode);
+		}else{
+			Shape s = selectedNode.createInnerShape(0, 0, currentWidth/2,currentHeight/2, currentColor, currentPathType, currentShapeType);
+			this.insertNodeInto(s, selectedNode);
+		}
+	}
 
+	class AddActionListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
 	// you don't need to make any changes after this line ______________
 	public void setCurrentShapeType(ShapeType value) { currentShapeType = value; }
 	public void setCurrentPathType(PathType value) { currentPathType = value; }
