@@ -62,7 +62,6 @@ public class A3  extends JFrame {
 		JPanel listPanel = new JPanel(new BorderLayout());
 		treePanel.setPreferredSize(new Dimension(Shape.DEFAULT_PANEL_WIDTH, Shape.DEFAULT_PANEL_HEIGHT/2));
 		listPanel.setPreferredSize(new Dimension(Shape.DEFAULT_PANEL_WIDTH, Shape.DEFAULT_PANEL_HEIGHT/2));
-		//tree = new JTree(panel);
 		tree = new JTree();
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.setShowsRootHandles(true);
@@ -83,12 +82,13 @@ public class A3  extends JFrame {
 
 			if (tree.getLastSelectedPathComponent() instanceof NestedShape) {
 				panel.addShapeNode(((NestedShape) tree.getLastSelectedPathComponent()));
+				// tree.add((Component) tree.getLastSelectedPathComponent());
 			}
 			if(!(tree.getLastSelectedPathComponent() instanceof NestedShape) && tree.getLastSelectedPathComponent() != null) {
-				JOptionPane.showMessageDialog(panel, "ERROR: Must select a NestedShape node.");
+				JOptionPane.showMessageDialog(null, "ERROR: Must select a NestedShape node.");
 			}
 			if (tree.getLastSelectedPathComponent() == null) {
-				JOptionPane.showMessageDialog(panel, "ERROR: No node selected.");
+				JOptionPane.showMessageDialog(null, "ERROR: No node selected.");
 			}
 
 		}
@@ -97,13 +97,13 @@ public class A3  extends JFrame {
 		public void actionPerformed( ActionEvent e) {
 			
 			if (tree.getLastSelectedPathComponent() == null) {
-				JOptionPane.showMessageDialog(panel, "ERROR: No node selected.");
+				JOptionPane.showMessageDialog(null, "ERROR: No node selected.");
 			}else{
 			if (!(panel.isRoot((Shape) tree.getLastSelectedPathComponent()))) {
 				panel.removeNodeFromParent((Shape) tree.getLastSelectedPathComponent());
 			}
 			if (panel.isRoot((Shape) tree.getLastSelectedPathComponent())) {
-				JOptionPane.showMessageDialog(panel, "ERROR: Must select a NestedShape node.");				
+				JOptionPane.showMessageDialog(null, "ERROR: Must select a NestedShape node.");				
 			}
 		}
 		}

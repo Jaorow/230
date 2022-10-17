@@ -93,6 +93,7 @@ class NestedShape extends RectangleShape {
         g.translate(-x, -y);
     }
     public void move(){
+        super.move();
         for (Shape shape : innerShapes) {
             shape.move();
         }

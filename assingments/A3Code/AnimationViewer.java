@@ -17,10 +17,9 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.event.ListDataListener;
 import java.lang.reflect.Field;
 
-class AnimationViewer extends JComponent implements Runnable {
+class AnimationViewer extends JComponent implements Runnable, TreeModel {
 	private Thread animationThread = null;		// the thread for animation
-	private static int DELAY = 10;				 // the current animation speed
-	// ArrayList<Shape> shapes = new ArrayList<Shape>(); //create the ArrayList to store shapes
+	private static int DELAY = 50;				 // the current animation speed
 	private ShapeType currentShapeType=Shape.DEFAULT_SHAPETYPE; // the current shape type,
 	private PathType currentPathType=Shape.DEFAULT_PATHTYPE;	// the current path type
 	private Color currentColor=Shape.DEFAULT_COLOR; // the current fill colour of a shape
@@ -32,7 +31,15 @@ class AnimationViewer extends JComponent implements Runnable {
 		root = new NestedShape(currentPanelWidth,currentPanelHeight);
 		start();
 		addMouseListener(new MyMouseAdapter());
+
+// TODO: testing
+		NestedShape s1 = (NestedShape)root.createInnerShape(0, 0, currentWidth,currentHeight,currentColor, currentPathType, ShapeType.NESTED);
+        insertNodeInto(s1, root);
+        Shape s1_1 = s1.createInnerShape(10, 10, 40,40,currentColor, currentPathType, ShapeType.RECTANGLE);
+
 	}
+
+	
 	public NestedShape getRoot(){
 		return this.root;
 	}
