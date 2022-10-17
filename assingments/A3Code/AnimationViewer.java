@@ -31,12 +31,6 @@ class AnimationViewer extends JComponent implements Runnable, TreeModel {
 		root = new NestedShape(currentPanelWidth,currentPanelHeight);
 		start();
 		addMouseListener(new MyMouseAdapter());
-
-// TODO: testing
-		NestedShape s1 = (NestedShape)root.createInnerShape(0, 0, currentWidth,currentHeight,currentColor, currentPathType, ShapeType.NESTED);
-        insertNodeInto(s1, root);
-        Shape s1_1 = s1.createInnerShape(10, 10, 40,40,currentColor, currentPathType, ShapeType.RECTANGLE);
-
 	}
 
 	
@@ -44,17 +38,6 @@ class AnimationViewer extends JComponent implements Runnable, TreeModel {
 		return this.root;
 	}
 
-	// protected void createNewShape(int x, int y) {
-	// 	switch (currentShapeType) {
-	// 	  case RECTANGLE: {
-	// 		shapes.add( new RectangleShape(x, y,currentWidth,currentHeight,currentPanelWidth,currentPanelHeight,currentColor,currentPathType));
-	// 		break;
-	// 	  } case OVAL: {
-	// 		shapes.add( new OvalShape(x, y,currentWidth,currentHeight,currentPanelWidth,currentPanelHeight,currentColor,currentPathType));
-	// 		break;
-	// 	  }
-	// 	}
-	//   }
 
 	class MyMouseAdapter extends MouseAdapter {
 		public void mouseClicked( MouseEvent e ) {
@@ -162,9 +145,9 @@ class AnimationViewer extends JComponent implements Runnable, TreeModel {
 	public void valueForPathChanged(TreePath path, Object newValue){}
 
 	public void fireTreeNodesInserted(Object source, Object[] path,int[] childIndices,Object[] children){
-		TreeModelEvent event = new TreeModelEvent(source, path);
+		TreeModelEvent tme = new TreeModelEvent(source, path,childIndices,children);
 		for (TreeModelListener  listner: treeModelListeners) {
-			listner.treeNodesInserted(event);
+			listner.treeNodesInserted(tme);
 		}
 	}
 
@@ -185,7 +168,7 @@ class AnimationViewer extends JComponent implements Runnable, TreeModel {
 	}
 
 	public void fireTreeNodesRemoved(Object source, Object[] path, int[] childIndices,Object[] children){
-		TreeModelEvent tme = new TreeModelEvent(source, path);
+		TreeModelEvent tme = new TreeModelEvent(source, path,childIndices,children);
 		for (TreeModelListener tml : treeModelListeners) {
 			tml.treeNodesRemoved(tme);
 		}

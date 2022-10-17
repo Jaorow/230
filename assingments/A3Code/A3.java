@@ -62,7 +62,7 @@ public class A3  extends JFrame {
 		JPanel listPanel = new JPanel(new BorderLayout());
 		treePanel.setPreferredSize(new Dimension(Shape.DEFAULT_PANEL_WIDTH, Shape.DEFAULT_PANEL_HEIGHT/2));
 		listPanel.setPreferredSize(new Dimension(Shape.DEFAULT_PANEL_WIDTH, Shape.DEFAULT_PANEL_HEIGHT/2));
-		tree = new JTree();
+		tree = new JTree(panel);
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.setShowsRootHandles(true);
 		JScrollPane treeScrollpane = new JScrollPane(tree);
