@@ -108,8 +108,6 @@ class AnimationViewer extends JComponent implements Runnable, TreeModel {
 	}
 
 	public int getChildCount(Object parent){
-		// TODO 
-		// Dont think that end check is required 
 		int count = 0;
 		if ((parent instanceof NestedShape)) {
 			NestedShape p = (NestedShape) parent;
@@ -155,8 +153,6 @@ class AnimationViewer extends JComponent implements Runnable, TreeModel {
 		fireTreeNodesInserted(this, parent.getPath(), new int[]{getIndexOfChild(parent, newChild)},new Object[]{newChild});
 	}
 
-	// FIXME: not working...
-	// might be working but keep incase problems arise in running
 	public void addShapeNode(NestedShape selectedNode){
 		if(isRoot(selectedNode)){
 			Shape s = selectedNode.createInnerShape(0, 0, currentWidth,currentHeight, currentColor, currentPathType, currentShapeType);
