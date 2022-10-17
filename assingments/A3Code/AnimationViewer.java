@@ -19,7 +19,7 @@ import java.lang.reflect.Field;
 
 class AnimationViewer extends JComponent implements Runnable {
 	private Thread animationThread = null;		// the thread for animation
-	private static int DELAY = 120;				 // the current animation speed
+	private static int DELAY = 10;				 // the current animation speed
 	// ArrayList<Shape> shapes = new ArrayList<Shape>(); //create the ArrayList to store shapes
 	private ShapeType currentShapeType=Shape.DEFAULT_SHAPETYPE; // the current shape type,
 	private PathType currentPathType=Shape.DEFAULT_PATHTYPE;	// the current path type
@@ -166,6 +166,7 @@ class AnimationViewer extends JComponent implements Runnable {
 	}
 
 	// FIXME: not working...
+	// might be working but keep incase problems arise in running
 	public void addShapeNode(NestedShape selectedNode){
 		if(isRoot(selectedNode)){
 			Shape s = selectedNode.createInnerShape(0, 0, currentWidth,currentHeight, currentColor, currentPathType, currentShapeType);
@@ -176,15 +177,21 @@ class AnimationViewer extends JComponent implements Runnable {
 		}
 	}
 
-	class AddActionListener implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
+	public void fireTreeNodesRemoved(Object source, Object[] path, int[] childIndices,Object[] children){
+		TreeModelEvent tme = new TreeModelEvent(source, path);
+		for (TreeModelListener tml : treeModelListeners) {
+			tml.treeNodesRemoved(tme);
 		}
-		
 	}
+
+	public void removeNodeFromParent(Shape selectedNode){
+		NestedShape p = selectedNode.getParent();
+		int[] index = new int[]{p.indexOf(selectedNode)};
+		p.removeInnerShape(selectedNode);
+		fireTreeNodesRemoved(this, p.getPath(), index, new Object[]{selectedNode});
+	}
+	
+
 	// you don't need to make any changes after this line ______________
 	public void setCurrentShapeType(ShapeType value) { currentShapeType = value; }
 	public void setCurrentPathType(PathType value) { currentPathType = value; }

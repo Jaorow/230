@@ -80,12 +80,32 @@ public class A3  extends JFrame {
 	}
 	class AddActionListener implements ActionListener {
 		public void actionPerformed( ActionEvent e) {
-		//complete this
+
+			if (tree.getLastSelectedPathComponent() instanceof NestedShape) {
+				panel.addShapeNode(((NestedShape) tree.getLastSelectedPathComponent()));
+			}
+			if(!(tree.getLastSelectedPathComponent() instanceof NestedShape) && tree.getLastSelectedPathComponent() != null) {
+				JOptionPane.showMessageDialog(panel, "ERROR: Must select a NestedShape node.");
+			}
+			if (tree.getLastSelectedPathComponent() == null) {
+				JOptionPane.showMessageDialog(panel, "ERROR: No node selected.");
+			}
+
 		}
 	}
 	class RemoveActionListener implements ActionListener {
 		public void actionPerformed( ActionEvent e) {
-			//complete this
+			
+			if (tree.getLastSelectedPathComponent() == null) {
+				JOptionPane.showMessageDialog(panel, "ERROR: No node selected.");
+			}else{
+			if (!(panel.isRoot((Shape) tree.getLastSelectedPathComponent()))) {
+				panel.removeNodeFromParent((Shape) tree.getLastSelectedPathComponent());
+			}
+			if (panel.isRoot((Shape) tree.getLastSelectedPathComponent())) {
+				JOptionPane.showMessageDialog(panel, "ERROR: Must select a NestedShape node.");				
+			}
+		}
 		}
 	}
 	public JPanel setUpToolsPanel() {
@@ -122,6 +142,4 @@ public class A3  extends JFrame {
 			}
 		}
 	}
-
 }
-
