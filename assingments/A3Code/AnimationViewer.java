@@ -2,7 +2,7 @@
  * ==========================================================================================
  * AnimationViewer.java : Moves shapes around on the screen according to different paths.
  * It is the main drawing area where shapes are added and manipulated.
- * YOUR UPI: JDUN349
+ * YOUR UPI: Jdun349
  * ==========================================================================================
  */
 

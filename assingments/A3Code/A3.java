@@ -1,7 +1,7 @@
 /*
  *  ============================================================================================
  *  A3.java : Extends JFrame and contains a panel where shapes move around on the screen.
- *  YOUR UPI: ANSWER
+ *  YOUR UPI: Jdun349
  *  ============================================================================================
  */
 import javax.swing.*;
@@ -57,6 +57,7 @@ public class A3  extends JFrame {
 		mainPanel.add(mainSplitPane);
 		return mainPanel;
 	}
+	
 	public JPanel setUpModelPanel() {
 		JPanel treePanel = new JPanel(new BorderLayout());
 		JPanel listPanel = new JPanel(new BorderLayout());
