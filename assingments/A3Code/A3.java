@@ -104,7 +104,7 @@ public class A3  extends JFrame {
 				panel.removeNodeFromParent((Shape) tree.getLastSelectedPathComponent());
 			}
 			if (panel.isRoot((Shape) tree.getLastSelectedPathComponent())) {
-				JOptionPane.showMessageDialog(null, "ERROR: Must select a NestedShape node.");				
+				JOptionPane.showMessageDialog(null, "ERROR: Must not remove the root.");				
 			}
 		}
 		}

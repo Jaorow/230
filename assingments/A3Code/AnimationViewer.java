@@ -19,7 +19,7 @@ import java.lang.reflect.Field;
 
 class AnimationViewer extends JComponent implements Runnable, TreeModel {
 	private Thread animationThread = null;		// the thread for animation
-	private static int DELAY = 40;				 // the current animation speed
+	private static int DELAY = 120;				 // the current animation speed
 	private ShapeType currentShapeType=Shape.DEFAULT_SHAPETYPE; // the current shape type,
 	private PathType currentPathType=Shape.DEFAULT_PATHTYPE;	// the current path type
 	private Color currentColor=Shape.DEFAULT_COLOR; // the current fill colour of a shape
