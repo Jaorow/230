@@ -3,6 +3,8 @@ import java.util.*;
 class Q5{
     public static void main(String[] args) {
         System.out.println(getWordsList("text.txt", 5));
+        System.out.println(getWordsList("text.txt", 5));
+
     }
 
     public static ArrayList<String> getWordsList(String filename, int desiredLength){
