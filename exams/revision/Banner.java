@@ -55,9 +55,20 @@ class Container{
             word.setWidth(width);
             words.add(word);
         } else {
+            words.add(word);
+            this.width = word.getWidth();
             for (Banner banner : words) {
                 banner.setWidth(width);
             }
+
         }
     }
+    public String toString(){
+        String cont = "";
+        for (Banner banner : words) {
+            cont += banner.toString();            
+        }
+        return cont;
+    }
+    
 }
