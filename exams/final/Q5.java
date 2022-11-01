@@ -30,7 +30,15 @@ class VendingMachine{
     }
 
     public double purchase(int id){
-        
+        for (Item item : items) {
+            if (item.getItemId() == id) {
+                if (item.isAvailable()){
+                item.purchase();
+                return item.getPrice();
+                } else { return 0.0; }
+            }
+        }
+        return 0.0;
     }
 
 }
